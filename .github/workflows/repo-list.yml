@@ -1,0 +1,39 @@
+name: Repository list
+
+on:
+  workflow_dispatch:
+
+jobs:
+  repo-list:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: Get orgs
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{secrets.GH_TOKEN}}
+        script: |
+          const query = `query($enterpriseName:String!, $cursor:String) {
+            enterprise(slug: $enterpriseName) {
+              name
+              organizations(first: 100, after: $cursor) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                totalCount
+                nodes {
+                  name 
+                  login
+                }
+              }
+            }
+          }`;
+          const variables = {
+            enterpriseName: 'octodemo'
+          }
+          const result = await github.graphql(query, variables)
+          console.log(result)

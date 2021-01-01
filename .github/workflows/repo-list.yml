@@ -20,7 +20,7 @@ jobs:
           const query = `query($enterpriseName:String!, $cursor:String) {
             enterprise(slug: $enterpriseName) {
               name
-              organizations(first: 100, after: $cursor) {
+              organizations(first: 10, after: $cursor) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -36,9 +36,16 @@ jobs:
           const variables = {
             enterpriseName: 'octodemo'
           }
-          const result = await github.graphql(query, variables)
-          fs.writeFileSync('orgs.json', JSON.stringify(result.enterprise.organizations.nodes))
-          console.log(result)
+          let hasNextPage = true
+          let orgs = []
+          while (hasNextPage) {
+            const result = await github.graphql(query, variables)
+            orgs = orgs.concat(result.enterprise.organizations.nodes)
+            hasNextPage = result.enterprise.organizations.pageInfo.hasNextPage
+            variables.cursor = result.enterprise.organizations.pageInfo.endCursor
+          }
+          
+          fs.writeFileSync('orgs.json', JSON.stringify(orgs))
     - name: Save the orgs
       run: |
           git config user.name github-actions

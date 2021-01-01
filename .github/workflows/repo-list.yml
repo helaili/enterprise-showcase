@@ -20,7 +20,7 @@ jobs:
           const query = `query($enterpriseName:String!, $cursor:String) {
             enterprise(slug: $enterpriseName) {
               name
-              organizations(first: 10, after: $cursor) {
+              organizations(first: 100, after: $cursor) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -36,13 +36,16 @@ jobs:
           const variables = {
             enterpriseName: 'octodemo'
           }
+          
           let hasNextPage = true
           let orgs = []
+
           while (hasNextPage) {
             const result = await github.graphql(query, variables)
             orgs = orgs.concat(result.enterprise.organizations.nodes)
             hasNextPage = result.enterprise.organizations.pageInfo.hasNextPage
             variables.cursor = result.enterprise.organizations.pageInfo.endCursor
+            console.log(result.enterprise.organizations.nodes)
           }
           
           fs.writeFileSync('orgs.json', JSON.stringify(orgs))

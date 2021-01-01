@@ -47,7 +47,7 @@ jobs:
             variables.cursor = result.enterprise.organizations.pageInfo.endCursor
             console.log(orgs)
           }
-          
+          console.log('exit:' + orgs)
           fs.writeFileSync('orgs.json', JSON.stringify(orgs))
     - name: Save the orgs
       run: |

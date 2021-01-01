@@ -45,7 +45,7 @@ jobs:
             orgs = orgs.concat(result.enterprise.organizations.nodes)
             hasNextPage = result.enterprise.organizations.pageInfo.hasNextPage
             variables.cursor = result.enterprise.organizations.pageInfo.endCursor
-            console.log(result.enterprise.organizations.nodes)
+            console.log(orgs)
           }
           
           fs.writeFileSync('orgs.json', JSON.stringify(orgs))

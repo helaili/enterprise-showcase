@@ -37,7 +37,7 @@ jobs:
             enterpriseName: 'octodemo'
           }
           const result = await github.graphql(query, variables)
-          fs.writeFileSync('orgs.json', JSON.stringify(result.nodes))
+          fs.writeFileSync('orgs.json', JSON.stringify(result.enterprise.organizations.nodes))
           console.log(result)
     - name: Save the orgs
       run: |

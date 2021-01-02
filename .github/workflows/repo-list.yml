@@ -20,7 +20,7 @@ jobs:
           const query = `query($enterpriseName:String!, $cursor:String) {
             enterprise(slug: $enterpriseName) {
               name
-              organizations(first: 10, after: $cursor) {
+              organizations(first: 100, after: $cursor) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -45,14 +45,12 @@ jobs:
             orgs = orgs.concat(result.enterprise.organizations.nodes)
             hasNextPage = result.enterprise.organizations.pageInfo.hasNextPage
             variables.cursor = result.enterprise.organizations.pageInfo.endCursor
-            console.log(orgs)
           }
-          console.log('exit:' + orgs)
           fs.writeFileSync('orgs.json', JSON.stringify(orgs))
     - name: Save the orgs
       run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "latest list of orgs"
+          git commit --allow-empty -m "latest list of orgs"
           git push

@@ -35,7 +35,8 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+# Ignoring the root node_modules dir but not the Actions one
+/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files

@@ -6,47 +6,15 @@ on:
 jobs:
   repo-list:
     runs-on: ubuntu-latest
-
-    
+ 
     steps:
     - uses: actions/checkout@v2
     - name: Get orgs
-      uses: actions/github-script@v3
+      uses: ./.github/actions/ea-repo-list
       with:
-        github-token: ${{secrets.GH_EA_TOKEN}}
-        script: |
-          fs = require('fs')
-
-          const query = `query($enterpriseName:String!, $cursor:String) {
-            enterprise(slug: $enterpriseName) {
-              name
-              organizations(first: 100, after: $cursor) {
-                pageInfo {
-                  hasNextPage
-                  endCursor
-                }
-                totalCount
-                nodes {
-                  name 
-                  login
-                }
-              }
-            }
-          }`;
-          const variables = {
-            enterpriseName: 'octodemo'
-          }
-          
-          let hasNextPage = true
-          let orgs = []
-
-          while (hasNextPage) {
-            const result = await github.graphql(query, variables)
-            orgs = orgs.concat(result.enterprise.organizations.nodes)
-            hasNextPage = result.enterprise.organizations.pageInfo.hasNextPage
-            variables.cursor = result.enterprise.organizations.pageInfo.endCursor
-          }
-          fs.writeFileSync('orgs.json', JSON.stringify(orgs))
+        enterprise: octodemo
+        outputFilename: orgs.json
+        token: ${{secrets.GH_EA_TOKEN}}
     - name: Save the orgs
       run: |
           git config user.name github-actions

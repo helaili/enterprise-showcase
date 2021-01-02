@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Get orgs
-      uses: ./.github/actions/ea-repo-list
+      uses: helaili/ea-repo-list@master
       with:
         enterprise: octodemo
         outputFilename: orgs.json

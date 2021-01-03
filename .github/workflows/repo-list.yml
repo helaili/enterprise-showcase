@@ -9,16 +9,16 @@ jobs:
  
     steps:
     - uses: actions/checkout@v2
-    - name: Get orgs
+    - name: Get the repos
       uses: helaili/ea-repo-list@master
       with:
         enterprise: octodemo
         outputFilename: orgs.json
         token: ${{secrets.GH_EA_TOKEN}}
-    - name: Save the orgs
+    - name: Save the repos
       run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit --allow-empty -m "latest list of orgs"
+          git commit --allow-empty -m "latest list of repos"
           git push

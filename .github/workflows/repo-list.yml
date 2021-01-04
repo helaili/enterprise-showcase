@@ -13,7 +13,7 @@ jobs:
       uses: helaili/ea-repo-list@master
       with:
         enterprise: octodemo
-        outputFilename: orgs.json
+        outputFilename: repositories.json
         token: ${{secrets.GH_EA_TOKEN}}
     - name: Save the repos
       run: |

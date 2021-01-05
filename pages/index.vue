@@ -23,7 +23,7 @@
           </v-btn>
           <v-btn>
             <v-icon left>mdi-source-fork</v-icon>
-            0
+            {{repo.forks_count}}
           </v-btn>
           <v-spacer />
           

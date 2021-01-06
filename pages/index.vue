@@ -27,12 +27,7 @@
             <v-icon left>mdi-source-fork</v-icon>
             {{repo.forks_count}}
           </v-btn>
-          <v-btn>
-            <v-icon left>mdi-source-fork</v-icon>
-            {{repo.forks_count}}
-          </v-btn>
           <v-spacer />
-          
         </v-card-actions>
       </v-card>
     </v-col>

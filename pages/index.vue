@@ -4,10 +4,10 @@
       <v-col v-for="repo of repositories.slice(pageStart, pageStart+pageSize)" :key="repo.full_name" cols="6">
         <v-card>
           <v-card-title>
-            <a :href="repo.html_url">{{ repo.name }}</a>
+            <a :href="repo.html_url" class="plain-link">{{ repo.name }}</a>
           </v-card-title>
           <v-card-subtitle>
-            <a :href="repo.html_url">{{ repo.full_name }}</a>
+            <a :href="repo.html_url" class="plain-link">{{ repo.full_name }}</a>
           </v-card-subtitle>
           <v-card-text>
             <p class="description">
@@ -95,7 +95,7 @@ export default {
   position: absolute;
 }
 
-a {
+.plain-link {
   color: inherit; /* no blue color for links */
   text-decoration: inherit; /* no underline */
 }

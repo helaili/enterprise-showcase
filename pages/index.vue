@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="repo of repositories.slice(pageStart, pageStart+pageSize)" v-bind:key="repo.name" cols="6">
+      <v-col v-for="repo of repositories.slice(pageStart, pageStart+pageSize)" v-bind:key="repo.full_name" cols="6">
         <v-card>   
           <v-card-title>
             {{repo.name}}
@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     goToPage: function(input) {
-      console.log(input)
       this.pageStart = (input-1) * this.pageSize
     }
   }

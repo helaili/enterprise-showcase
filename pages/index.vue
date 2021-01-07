@@ -87,7 +87,7 @@ export default {
 }
 
 a {
-  color: inherit; /* blue colors for links too */
+  color: inherit; /* no blue color for links */
   text-decoration: inherit; /* no underline */
 }
 

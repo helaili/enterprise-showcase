@@ -70,7 +70,7 @@ export default {
     this.totalPages = Math.floor(this.repositories.length / this.pageSize) + 1
   },
   methods: {
-    goToPage: (input) => {
+    goToPage(input) {
       this.pageStart = (input - 1) * this.pageSize
     }
   }

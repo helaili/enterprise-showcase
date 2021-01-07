@@ -4,7 +4,7 @@
       <v-col v-for="repo of repositories.slice(pageStart, pageStart+pageSize)" v-bind:key="repo.full_name" cols="6">
         <v-card>   
           <v-card-title>
-            {{repo.name}}
+            <a v-bind:href="repo.html_url">{{repo.name}}</a>
           </v-card-title>
           <v-card-subtitle>{{repo.full_name}}</v-card-subtitle>
           <v-card-text>

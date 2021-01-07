@@ -62,13 +62,12 @@ export default {
       repositories: repoFile,
       page: 1,
       pageStart: 0,
-      pageSize: 40
+      pageSize: 40,
+      totalPages: 0
     }
   },
-  computed: {
-    totalPages: () => {
-      return Math.floor(this.repositories.length / this.pageSize) + 1
-    }
+  created () {
+    this.totalPages = Math.floor(this.repositories.length / this.pageSize) + 1
   },
   methods: {
     goToPage: (input) => {

@@ -6,7 +6,9 @@
           <v-card-title>
             <a v-bind:href="repo.html_url">{{repo.name}}</a>
           </v-card-title>
-          <v-card-subtitle>{{repo.full_name}}</v-card-subtitle>
+          <v-card-subtitle>
+            <a v-bind:href="repo.html_url">{{repo.full_name}}</a>
+          </v-card-subtitle>
           <v-card-text>
             <p class="description">{{repo.description || '&nbsp;'}}</p>
           </v-card-text>
@@ -82,6 +84,11 @@ export default {
 .no-topic {
   bottom: 0;
   position: absolute;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
 
 </style>

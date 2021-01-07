@@ -2,7 +2,7 @@
   <v-row>
     <v-col class="text-center">
       <img
-        src="/GitHub-Mark-Light-120px-plus.png"
+        src="GitHub-Mark-Light-120px-plus.png"
         alt="GitHub"
         class="mb-5"
       >

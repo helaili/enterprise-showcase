@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -22,7 +22,7 @@ export default {
     })
   },
   methods: {
-    getRepository(repo) {
+    getRepository (repo) {
       return this.repositoryMap[repo]
     }
   }

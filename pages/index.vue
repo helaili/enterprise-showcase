@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from 'vuex'
 import Repository from '~/components/global/Repository.vue'
 
 export default {
@@ -27,18 +27,18 @@ export default {
       totalPages: 0
     }
   },
-  created () {
-    this.totalPages = Math.floor(this.repositories.length / this.pageSize) + 1
-  },
   computed: {
     ...mapGetters({
       repositories: 'getRepositories'
     })
   },
+  created () {
+    this.totalPages = Math.floor(this.repositories.length / this.pageSize) + 1
+  },
   methods: {
-    getCurrentPageRepositories() {
+    getCurrentPageRepositories () {
       if (this.repositories) {
-        return this.repositories.slice(this.pageStart, this.pageStart+this.pageSize)
+        return this.repositories.slice(this.pageStart, this.pageStart + this.pageSize)
       } else {
         return []
       }

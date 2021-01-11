@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions } from 'vuex'
 import repoFile from '~/repositories.json'
 
 export default {
@@ -95,7 +95,7 @@ export default {
     this.loadRepositories(repoFile)
   },
   methods: {
-     ...mapActions({
+    ...mapActions({
       loadRepositories: 'loadRepositories'
     })
   }

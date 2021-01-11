@@ -4,18 +4,18 @@ export const state = () => ({
 })
 
 export const mutations = {
-  repositories(state, repositories) {
+  repositories (state, repositories) {
     state.repositories = repositories
   },
-  repositoryMap(state, repositoryMap) {
+  repositoryMap (state, repositoryMap) {
     state.repositoryMap = repositoryMap
   }
 }
 
 export const actions = {
-  loadRepositories({ state, commit }, repositories) {
+  loadRepositories ({ commit }, repositories) {
     const map = {}
-    for(let repo of repositories) {
+    for (const repo of repositories) {
       map[repo.full_name] = repo
     }
     commit('repositories', repositories)
@@ -24,10 +24,10 @@ export const actions = {
 }
 
 export const getters = {
-  getRepositories: state => {
+  getRepositories: (state) => {
     return state.repositories
   },
-  getRepositoryMap: state => {
+  getRepositoryMap: (state) => {
     return state.repositoryMap
   }
 }

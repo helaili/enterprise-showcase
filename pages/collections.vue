@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <div class="text-h1 gradient-text hxl">Collections</div>
+    <div class="text-h1 gradient-text hxl">
+      Collections
+    </div>
     <v-card v-for="collection of collections" :key="collection.slug" class="collection-card">
       <NuxtLink :to="{ name: 'collection-slug', params: { slug: collection.slug } }" class="plain-link">
         <v-card-title>
@@ -15,21 +17,19 @@
 </template>
 
 <script>
-  export default {
-    async asyncData({ $content, params }) {
-      const collections = await $content('collections', params.slug)
-        .only(['title', 'description', 'slug'])
-        .sortBy('createdAt', 'asc')
-        .fetch()
+export default {
+  async asyncData ({ $content, params }) {
+    const collections = await $content('collections', params.slug)
+      .only(['title', 'description', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .fetch()
 
-      return {
-        collections
-      }
+    return {
+      collections
     }
   }
+}
 </script>
-
-
 
 <style lang="scss" scoped>
 .collection-card {

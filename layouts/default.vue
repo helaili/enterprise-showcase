@@ -62,6 +62,9 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
+import repoFile from '~/repositories.json'
+
 export default {
   data () {
     return {
@@ -75,6 +78,11 @@ export default {
           to: '/'
         },
         {
+          icon: 'mdi-bookshelf',
+          title: 'Collections',
+          to: '/collections'
+        },
+        {
           icon: 'mdi-information-outline',
           title: 'Resources',
           to: '/resources'
@@ -82,6 +90,14 @@ export default {
       ],
       title: 'Enterprise Showcase'
     }
+  },
+  created () {
+    this.loadRepositories(repoFile)
+  },
+  methods: {
+     ...mapActions({
+      loadRepositories: 'loadRepositories'
+    })
   }
 }
 </script>

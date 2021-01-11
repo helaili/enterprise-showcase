@@ -32,6 +32,25 @@ Showcase all the great work that your peers are working on and happily sharing i
 ```
 - Manually trigger a first repository list retrieval by starting the *Generate repository list* workflow. The Actions workflow should execute succesfully and you should get a freshly commited `repositories.json` file at the root of your repository. 
 ![Screen Shot 2021-01-11 at 17 03 17](https://user-images.githubusercontent.com/2787414/104205785-16581700-542f-11eb-9b9f-1886699cbb80.png)
+- Create collections by creating a `.md` file per collection in `content/collections`. The *front matter* header allow you to set the collection title, description and list of repositories. The body of the document is available to provide a more detailed description of the collection.
+
+```markdown
+---
+title: C.R.E.A.M.
+description: Cheese Rules Everything Around Me
+repositories:
+- octocheese/camembert
+- octocheese/roquefort
+- amsterdam/gouda
+- vermont/cheddar
+---
+
+# All of them!!! 
+
+We love them all 
+```
+<img width="1383" alt="Screen Shot 2021-01-11 at 21 49 45" src="https://user-images.githubusercontent.com/2787414/104236613-2126a200-5457-11eb-9bef-f45e890886c5.png">
+
 - The web site should be published to `https://<your org or account name>/enterprise-showcase/`. In case you renamed the repository, change `router.base` accordingly in the `nuxt.config.js` file. Remove completly this variable if you are publishing to your organization or account-level site (`<user>.github.io` or `<organization>.github.io`)
 
 ## Build Setup

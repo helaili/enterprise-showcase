@@ -5,6 +5,7 @@
         src="GitHub-Mark-Light-120px-plus.png"
         alt="GitHub"
         class="mb-5"
+        style="margin-left:25px"
       >
       <blockquote class="blockquote">
         <ul style="list-style: none;">

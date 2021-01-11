@@ -1,0 +1,56 @@
+@mixin start-at($device-width) {
+  @media (min-width: $device-width) {
+    @content;
+  }
+}
+
+@mixin stop-at($device-width) {
+  @media (max-width: $device-width - 1) {
+    @content;
+  }
+}
+
+.gradient-text {
+	background: linear-gradient(270.97deg, #FFE580 -21.36%, #FF7571 -2.45%, #EA5DAD 26.84%, #C2A0FD 64.15%, #3BF0E4 108.29%, #B2F4B6 159.03%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.hxl {
+  display: block;
+  font-family: $sans-serif !important;
+  font-size: 54px !important;
+  line-height: 1.1;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  
+  @include start-at($medium) {
+    font-size: 72px !important;
+  }
+
+  @include start-at(400px) {
+    font-size: 68px !important;
+  }
+
+  @include start-at(420px) {
+    font-size: 72px !important;
+  }
+
+  @include start-at($small) {
+    font-size: 84px !important;
+  }
+
+  @include start-at($medium) {
+    font-size: 96px !important;
+  }
+}
+
+.plain-link {
+  color: inherit; /* no blue color for links */
+  text-decoration: inherit; /* no underline */
+}
+
+.v-application a {
+  color: inherit;
+}

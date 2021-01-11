@@ -13,5 +13,5 @@ repositories:
 
 # All of them!!! 
 
-We love hem all 
+We love them all 
 

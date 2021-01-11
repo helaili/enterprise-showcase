@@ -1,10 +1,6 @@
 name: Branch & Pull Request build
 
 on:
-  pull_request:
-    branches:
-      - main
-      - master
   push:
     branches-ignore:
       - main

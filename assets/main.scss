@@ -47,10 +47,6 @@
 }
 
 .plain-link {
-  color: inherit; /* no blue color for links */
-  text-decoration: inherit; /* no underline */
-}
-
-.v-application a {
-  color: inherit;
+  color: inherit !important; /* no blue color for links */
+  text-decoration: inherit;  /* no underline */
 }

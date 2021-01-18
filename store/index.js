@@ -34,9 +34,9 @@ export const actions = {
       // ignoreLocation: false,
       // ignoreFieldNorm: false,
       keys: [
-        "full_name",
-        "description",
-        "topics"
+        'full_name',
+        'description',
+        'topics'
       ]
     }
     const searchEngine = new Fuse(repositories, searchOptions)

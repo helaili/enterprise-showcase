@@ -36,7 +36,6 @@
         :items="items"
         :loading="isLoading"
         :search-input.sync="search"
-        @change="searchResultSelected"
         class="searchbox"
         color="white"
         hide-no-data
@@ -47,11 +46,12 @@
         label="Search repositories"
         placeholder="Start typing to Search"
         prepend-icon="mdi-database-search"
+        @change="searchResultSelected"
       >
         <template v-slot:item="{ item }">
           <v-list-item-content>
-            <v-list-item-title v-text="item.full_name"></v-list-item-title>
-            <v-list-item-subtitle v-text="item.description"></v-list-item-subtitle>
+            <v-list-item-title v-text="item.full_name" />
+            <v-list-item-subtitle v-text="item.description" />
             <v-chip-group column>
               <v-chip v-for="topic of item.topics" :key="topic" small>
                 {{ topic }}
@@ -122,7 +122,41 @@ export default {
       searchEntries: [],
       isLoading: false,
       searchSelection: '',
-      search: '',
+      search: ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      searchEngine: 'getSearchEngine'
+    }),
+    items () {
+      return this.searchEntries.map((entry) => {
+        if (entry.item.description) {
+          const description = entry.item.description.length > this.descriptionLimit
+            ? entry.item.description.slice(0, this.descriptionLimit) + '...'
+            : entry.item.description
+          return Object.assign({}, entry.item, { description })
+        } else {
+          return Object.assign({}, entry.item, { description: '' })
+        }
+      })
+    }
+  },
+  watch: {
+    search (val) {
+      if (this.isLoading) {
+        return
+      }
+
+      this.isLoading = true
+
+      if (!val || val.length === 0) {
+        this.searchEntries = []
+      } else {
+        this.searchEntries = this.searchEngine.search(val)
+      }
+
+      this.isLoading = false
     }
   },
   created () {
@@ -132,44 +166,12 @@ export default {
     ...mapActions({
       loadRepositories: 'loadRepositories'
     }),
-    searchResultSelected() {
+    searchResultSelected () {
       if (this.searchSelection) {
         const host = window.location.hostname === 'localhost' ? 'github.com' : window.location.hostname
         window.open(`https://${host}/${this.searchSelection}`, '_blank')
       }
     }
-  },
-  computed: {
-    ...mapGetters({
-      searchEngine: 'getSearchEngine'
-    }),
-    items () {
-      return this.searchEntries.map(entry => {
-        if (entry.item.description) {
-          const description = entry.item.description.length > this.descriptionLimit
-          ? entry.item.description.slice(0, this.descriptionLimit) + '...'
-          : entry.item.description
-          return Object.assign({}, entry.item, { description })
-        } else {
-          return Object.assign({}, entry.item, { description: '' })
-        }
-      })
-    },
-  },
-  watch: {
-    search (val) {
-      if (this.isLoading) return
-      
-      this.isLoading = true
-        
-      if (!val || val.length == 0) {
-        this.searchEntries = []
-      } else {
-        this.searchEntries = this.searchEngine.search(val)
-      }
-      
-      this.isLoading = false
-    },
   }
 }
 </script>

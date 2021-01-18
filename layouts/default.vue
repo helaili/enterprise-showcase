@@ -127,7 +127,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      searchEngine: 'getSearchEngine'
+      searchEngine: 'getSearchEngine',
+      repositoryMap: 'getRepositoryMap'
     }),
     items () {
       return this.searchEntries.map((entry) => {
@@ -168,8 +169,7 @@ export default {
     }),
     searchResultSelected () {
       if (this.searchSelection) {
-        const host = window.location.hostname === 'localhost' ? 'github.com' : window.location.hostname
-        window.open(`https://${host}/${this.searchSelection}`, '_blank')
+        window.open(this.repositoryMap[this.searchSelection].html_url, '_blank')
       }
     }
   }

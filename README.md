@@ -16,7 +16,7 @@ Showcase all the great work that your peers are working on and happily sharing i
 - Fork this repository
 - Enable GitHub Pages by setting `gh-pages` as the source branch 
 ![Screen Shot 2021-01-11 at 16 16 46](https://user-images.githubusercontent.com/2787414/104200209-ad6da080-5428-11eb-8103-da14ee7d654d.png)
-- Create a `GH_EA_TOKEN` secret and provide a Personal Access Token as the value 
+- Create a `GH_EA_TOKEN` secret and provide a Personal Access Token with `read:org` and `read:enterprise` permissions as the value (see [helaili/ea-repo-list](https://github.com/helaili/ea-repo-list) for more details). 
 - Configure the repository retrieval job by editing the `.github\workflows\repo-list.yml` and provide the name of your GitHub Enterprise Account
 
 ```yaml

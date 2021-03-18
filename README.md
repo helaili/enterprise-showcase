@@ -51,7 +51,7 @@ We love them all
 ```
 <img width="1383" alt="Screen Shot 2021-01-11 at 21 49 45" src="https://user-images.githubusercontent.com/2787414/104236613-2126a200-5457-11eb-9bef-f45e890886c5.png">
 
-- The web site should be published to `https://<your org or account name>/enterprise-showcase/`. In case you renamed the repository, change `router.base` accordingly in the `nuxt.config.js` file. Remove completly this variable if you are publishing to your organization or account-level site (`<user>.github.io` or `<organization>.github.io`)
+- The web site should be published to `https://<your org or account name>/enterprise-showcase/`. In case you renamed the repository, change `router.base` accordingly in the `nuxt.config.js` file. Remove this variable completely if you are publishing to your organization or account-level site (`<user>.github.io` or `<organization>.github.io`)
 
 ## Build Setup
 
